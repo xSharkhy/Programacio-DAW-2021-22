@@ -1,4 +1,4 @@
-package javaCourse;
+package javaCourse.chattyBot;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package javaCourse;
+package javaCourse.chattyBot;
 
 public class booleanExpression {
     public static void main(String[] args) {

@@ -1,8 +1,8 @@
-package javaCourse;
+package javaCourse.chattyBot;
 
 import java.util.Scanner;
 
-public class ReverseDigits {
+public class SumDigits {
     static Scanner sc = new Scanner(System.in);
     static final int TEN = 10;
     static final int HUNDRED = 100;
@@ -12,7 +12,6 @@ public class ReverseDigits {
         int one = n % TEN;
         int tens = (n / TEN) % TEN;
         int hundred = (n / HUNDRED) % TEN;
-        int m = one * HUNDRED + tens * TEN + hundred;
-        System.out.println(m);
+        System.out.println(one + tens + hundred);
     }
 }
