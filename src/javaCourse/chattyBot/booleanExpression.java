@@ -9,6 +9,10 @@ public class booleanExpression {
         System.out.println(a);
         char c = '1' + '3';
         System.out.println(c);
-        String str = "a package with exercices that I'm doing on Hyperskill. Feel free to look at it all";
+        System.out.println(-30 / 7);
+        char[] array = new char[-1];
+        char[] array2 = { 'a', 'b', 'c', 'd' };
+        char[] array4 = new char[1];
+        char[] array5 = new char[0];
     }
 }
