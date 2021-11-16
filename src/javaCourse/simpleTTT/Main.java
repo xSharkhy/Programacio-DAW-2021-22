@@ -13,6 +13,7 @@ public class Main {
         while (!sc.hasNext("[_OX][_OX][_OX][_OX][_OX][_OX][_OX][_OX][_OX]")) {
             System.out.println("Invalid input!");
             sc.next();
+            System.out.print("Enter cells: ");
         }
         char[] gameArray = sc.next().toCharArray();
         char[][] gameMatrix = new char[tttSize][tttSize];
@@ -23,6 +24,46 @@ public class Main {
                 k++;
             }
         }
+
+        printGame(separator, tttSize, gameMatrix);
+        sc.nextLine();
+
+        int coordX;
+        int coordY;
+        String temp;
+        System.out.print("Enter the coordinates: ");
+        temp = sc.nextLine();
+        do {
+            if (temp.matches("[0-9] [0-9]")) {
+                String[] parts = temp.split(" ");
+                coordX = Integer.parseInt(parts[0]);
+                coordY = Integer.parseInt(parts[1]);
+                if (coordX >= 1 && coordX <= 3 && coordY >= 1 && coordY <= 3) {
+                    if (gameMatrix[coordX - 1][coordY - 1] == '_') {
+                        gameMatrix[coordX - 1][coordY - 1] = 'X';
+                        printGame(separator, tttSize, gameMatrix);
+                        break;
+                    } else {
+                        System.out.println("This cell is occupied! Choose another one!");
+                        System.out.print("Enter the coordinates: ");
+                        temp = sc.nextLine();
+                    }
+                } else {
+                    System.out.println("Coordinates should be from 1 to 3!");
+                    System.out.print("Enter the coordinates: ");
+                    temp = sc.nextLine();
+                }
+            } else {
+                System.out.println("You should enter numbers!");
+                System.out.print("Enter the coordinates: ");
+                temp = sc.nextLine();
+            }
+        } while (true);
+
+//        System.out.println(returnResult(gameArray));
+    }
+
+    public static void printGame(String separator, int tttSize, char[][] gameMatrix) {
         System.out.println(separator);
         for (int i = 0; i < tttSize; i++) {
             for (int j = 0; j < tttSize; j++) {
@@ -36,43 +77,7 @@ public class Main {
             }
         }
         System.out.println(separator);
-        do {
-            System.out.print("Enter the coordinates: ");
-            while (!sc.hasNext("[0-9] [0-9]")) {
-                System.out.println("You should enter numbers!");
-                sc.next();
-                System.out.print("Enter the coordinates: ");
-            }
-            byte X = sc.nextByte();
-            byte Y = sc.nextByte();
-//            System.out.println("You should enter numbers!");
-            if (X > 3 || X < 0 || Y > 3 || Y < 0) {
-                System.out.println("Coordinates should be from 1 to 3!");
-            } else if (gameMatrix[X - 1][Y - 1] != '_') {
-                System.out.println("This cell is occupied! Choose another one!");
-                System.out.print("Enter the coordinates: ");
-            } else {
-                gameMatrix[X - 1][Y - 1] = 'X';
-                System.out.println(separator);
-                for (int i = 0; i < tttSize; i++) {
-                    for (int j = 0; j < tttSize; j++) {
-                        if (j == 0) {
-                            System.out.print("| " + gameMatrix[i][j] + " ");
-                        } else if (j == 2) {
-                            System.out.print(gameMatrix[i][j] + " |\n");
-                        } else {
-                            System.out.print(gameMatrix[i][j] + " ");
-                        }
-                    }
-                }
-                System.out.println(separator);
-                break;
-            }
-
-        } while (true);
-//        System.out.println(returnResult(gameArray));
     }
-
 /*
     public static String returnResult(char[] gameArray) {
         boolean xWins = false;
