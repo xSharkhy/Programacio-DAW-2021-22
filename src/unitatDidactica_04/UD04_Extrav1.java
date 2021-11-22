@@ -4,6 +4,10 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * @author Ismael Morejón Blasco.
+ * @version 0.6a, 11/22/21
+ */
 public class UD04_Extrav1 {
     static Scanner sc = new Scanner(System.in);
 
@@ -17,6 +21,13 @@ public class UD04_Extrav1 {
         new UD04_Extrav1().menu(length, matriz1, matriz2, matrizRes);
     }
 
+    /**
+     * @param matriz1   Array bidimensional primero en las operaciones de matrices.
+     * @param matriz2   Array bidimensional segundo en las operaciones de matrices.
+     * @param matrizRes Array bidimensional respuesta en las operaciones de matrices.
+     * @param length    longitud de las dimensiones cuadrdas de los Array bidimensionales.
+     */
+
     private void menu(int length, int[][] matriz1, int[][] matriz2, int[][] matrizRes) {
         byte option;
         do {
@@ -28,12 +39,12 @@ public class UD04_Extrav1 {
                     4.- Restar matrices.
                     5.- Multiplicar matrices.
                     6.- Multiplicar una matriz por un escalar.
-                    7.- Determinante de una matriz.
-                    8.- Matriz inversa.
                     9.- Matriz traspuesta.
-                    10.- Dividir matrices.
-                    11.- Potencia de la matriz.
+                    11.- Potencia de la matriz. (beta version)
                     0.- Salir.""");
+            //                    7.- Determinante de una matriz.
+            //                    8.- Matriz inversa.
+            //                    10.- Dividir matrices.
             System.out.print("Tu input: ");
             option = Byte.parseByte(sc.nextLine());
             System.out.println();
@@ -44,10 +55,10 @@ public class UD04_Extrav1 {
                 case 4 -> subMatrix(length, matriz1, matriz2, matrizRes);
                 case 5 -> multMatrix(length, matriz1, matriz2, matrizRes);
                 case 6 -> scalMatrix(length, matriz1, matriz2, matrizRes);
-                case 7 -> detMatrix(length, matriz1, matriz2, matrizRes);
-                case 8 -> inverseMatrix(length, matriz1, matriz2, matrizRes);
+                case 7 -> System.out.println("7 No implementado!"); //detMatrix(length, matriz1, matriz2, matrizRes);
+                case 8 -> System.out.println("8 No implementado!"); //inverseMatrix(length, matriz1, matriz2, matrizRes);
                 case 9 -> trasposeMatrix(length, matriz1, matriz2, matrizRes);
-                case 10 -> divMatrix(length, matriz1, matriz2, matrizRes);
+                case 10 -> System.out.println("10 No implementado!"); //divMatrix(length, matriz1, matriz2, matrizRes);
                 case 11 -> powerMatrix(length, matriz1, matriz2, matrizRes);
                 case 0 -> System.exit(0);
                 default -> System.out.println("Mal input! Número fuera de rango.");
@@ -320,6 +331,7 @@ public class UD04_Extrav1 {
         byte option;
         byte iterations = 0;
         int[][] temp = new int[length][length];
+        int[][] temp2 = new int[length][length];
         int sigma;
         outerloop:
         do {
@@ -340,44 +352,19 @@ public class UD04_Extrav1 {
                 case 1:
                     for (int i = 0; i < length; i++) {
                         System.arraycopy(matriz1[i], 0, temp[i], 0, length);
+                        System.arraycopy(matriz1[i], 0, temp2[i], 0, length);
                     }
-                    for (int i = 0; i < length; i++) {
-                        for (int j = 0; j < length; j++) {
-                            sigma = 0;
-                            for (int k = 0; k < length; k++) {
-                                sigma += matriz1[i][k] * matriz1[k][j];
+                    byte tempLoop = 0;
+                    while (tempLoop > iterations) {
+                        for (int i = 0; i < length; i++)
+                            for (int j = 0; j < length; j++) {
+                                sigma = 0;
+                                for (int k = 0; k < length; k++) sigma = temp[i][k] * temp2[k][j];
+                                temp[i][j] = sigma;
                             }
-                            temp[i][j] = sigma;
-                        }
+                        tempLoop++;
                     }
-                    break;
-                case 2:
-                    for (int i = 0; i < length; i++) {
-                        System.arraycopy(matriz2[i], 0, temp[i], 0, length);
-                    }
-                    for (int i = 0; i < length; i++) {
-                        for (int j = 0; j < length; j++) {
-                            sigma = 0;
-                            for (int k = 0; k < length; k++) {
-                                sigma += matriz2[i][k] * matriz2[k][j];
-                            }
-                            temp[i][j] = sigma;
-                        }
-                    }
-                    break;
-                case 3:
-                    for (int i = 0; i < length; i++) {
-                        System.arraycopy(matrizRes[i], 0, temp[i], 0, length);
-                    }
-                    for (int i = 0; i < length; i++) {
-                        for (int j = 0; j < length; j++) {
-                            sigma = 0;
-                            for (int k = 0; k < length; k++) {
-                                sigma += matrizRes[i][k] * matrizRes[k][j];
-                            }
-                            temp[i][j] = sigma;
-                        }
-                    }
+                    for (int i = 0; i < length; i++) System.arraycopy(temp[i], 0, matriz1[i], 0, length);
                     break;
                 case 0:
                     break outerloop;
