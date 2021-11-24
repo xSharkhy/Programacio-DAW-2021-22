@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  * @author Ismael Morejón Blasco.
- * @version 0.6a, 11/22/21
+ * @version 0.7, 11/22/21
  */
 public class UD04_Extrav1 {
     static Scanner sc = new Scanner(System.in);
@@ -40,7 +40,7 @@ public class UD04_Extrav1 {
                     5.- Multiplicar matrices.
                     6.- Multiplicar una matriz por un escalar.
                     9.- Matriz traspuesta.
-                    11.- Potencia de la matriz. (beta version)
+                    11.- Potencia de la matriz. (exponente 2)
                     0.- Salir.""");
             //                    7.- Determinante de una matriz.
             //                    8.- Matriz inversa.
@@ -191,7 +191,7 @@ public class UD04_Extrav1 {
 
     private static void multMatrix(int length, int[][] matriz1, int[][] matriz2, int[][] matrizRes) {
         int sigma;
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++)
             for (int j = 0; j < length; j++) {
                 sigma = 0;
                 for (int k = 0; k < length; k++) {
@@ -199,7 +199,6 @@ public class UD04_Extrav1 {
                 }
                 matrizRes[i][j] = sigma;
             }
-        }
     }
 
     private static void scalMatrix(int length, int[][] matriz1, int[][] matriz2, int[][] matrizRes) {
@@ -268,7 +267,22 @@ public class UD04_Extrav1 {
     }
 
     private static void detMatrix(int length, int[][] matriz1, int[][] matriz2, int[][] matrizRes) {
-
+//        int det = 0;
+//        int[][] temp;
+//        if (length == 1) det = matriz1[0][0];
+//        else if (length == 2) det = (matriz1[0][0] * matriz1[1][1] - matriz1[0][1] * matriz1[1][0]);
+//        else {
+//            for (int i = 0; i < length; i++) {
+//                temp = new int[length - 1][length - 1];
+//                for (int j = 1; j < length; j++) {
+//                    for (int k = 0; k < length; k++) {
+//                        if (k < i) temp[j - 1][k] = matriz1[j][k];
+//                        else if (k > i) temp[j - 1][k - 1] = matriz1[j][k];
+//                    }
+//                }
+//                det += matriz1[0][1] * Math.pow(-1, i) * ;
+//            }
+//        }
     }
 
     private static void inverseMatrix(int length, int[][] matriz1, int[][] matriz2, int[][] matrizRes) {
@@ -328,12 +342,10 @@ public class UD04_Extrav1 {
     }
 
     private static void powerMatrix(int length, int[][] matriz1, int[][] matriz2, int[][] matrizRes) {
-        byte option;
-        byte iterations = 0;
         int[][] temp = new int[length][length];
         int[][] temp2 = new int[length][length];
-        int sigma;
-        outerloop:
+        byte option;
+        outerLoop:
         do {
             System.out.println("¿Qué matriz quieres elevar?");
             System.out.println("""
@@ -341,33 +353,54 @@ public class UD04_Extrav1 {
                     2.- para Matriz B
                     3.- para Matriz Resultado
                     0.- para Salir""");
-            System.out.println("Tu input: ");
+            System.out.print("Tu input: ");
             option = Byte.parseByte(sc.nextLine());
             System.out.println();
-            if (option > 0) {
-                System.out.println("¿Por qué entero quieres elevar la matriz?");
-                iterations = Byte.parseByte(sc.nextLine());
-            }
             switch (option) {
                 case 1:
                     for (int i = 0; i < length; i++) {
                         System.arraycopy(matriz1[i], 0, temp[i], 0, length);
                         System.arraycopy(matriz1[i], 0, temp2[i], 0, length);
                     }
-                    byte tempLoop = 0;
-                    while (tempLoop > iterations) {
-                        for (int i = 0; i < length; i++)
-                            for (int j = 0; j < length; j++) {
-                                sigma = 0;
-                                for (int k = 0; k < length; k++) sigma = temp[i][k] * temp2[k][j];
-                                temp[i][j] = sigma;
+                    for (int i = 0; i < length; i++)
+                        for (int j = 0; j < length; j++) {
+                            int sigma = 0;
+                            for (int k = 0; k < length; k++) {
+                                sigma += temp[i][k] * temp2[k][j];
                             }
-                        tempLoop++;
+                            matriz1[i][j] = sigma;
+                        }
+                    break;
+                case 2:
+                    for (int i = 0; i < length; i++) {
+                        System.arraycopy(matriz2[i], 0, temp[i], 0, length);
+                        System.arraycopy(matriz2[i], 0, temp2[i], 0, length);
                     }
-                    for (int i = 0; i < length; i++) System.arraycopy(temp[i], 0, matriz1[i], 0, length);
+                    for (int i = 0; i < length; i++)
+                        for (int j = 0; j < length; j++) {
+                            int sigma = 0;
+                            for (int k = 0; k < length; k++) {
+                                sigma += temp[i][k] * temp2[k][j];
+                            }
+                            matriz2[i][j] = sigma;
+                        }
+                    break;
+                case 3:
+                    for (int i = 0; i < length; i++) {
+                        System.arraycopy(matrizRes[i], 0, temp[i], 0, length);
+                        System.arraycopy(matrizRes[i], 0, temp2[i], 0, length);
+                    }
+                    for (int i = 0; i < length; i++)
+                        for (int j = 0; j < length; j++) {
+                            int sigma = 0;
+                            for (int k = 0; k < length; k++) {
+                                sigma += temp[i][k] * temp2[k][j];
+                            }
+                            matrizRes[i][j] = sigma;
+                        }
                     break;
                 case 0:
-                    break outerloop;
+                    break outerLoop;
 
                 default:
                     System.out.println("Mal input! Número fuera de rango.");
