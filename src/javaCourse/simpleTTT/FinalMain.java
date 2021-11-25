@@ -148,8 +148,8 @@ public class FinalMain {
         if (gameArray[2] == 'X' && gameArray[4] == 'X' && gameArray[6] == 'X') xWins = true;
         if (gameArray[0] == 'O' && gameArray[4] == 'O' && gameArray[8] == 'O') oWins = true;
         if (gameArray[2] == 'O' && gameArray[4] == 'O' && gameArray[6] == 'O') oWins = true;
-        else if (xWins) return "X Wins";
-        else if (oWins) return "O Wins";
+        if (xWins) return "X wins";
+        if (oWins) return "O wins";
         //GAME NOT FINISHED
         for (char c : gameArray) {
             if (c == '_') {
