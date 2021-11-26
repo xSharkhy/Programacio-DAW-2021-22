@@ -20,7 +20,6 @@ public class FinalMain {
                 k++;
             }
         }
-
         printGame(separator, tttSize, gameMatrix);
         do {
             if (returnResult(gameMatrix).matches("Game not Finished")) xPlays(gameMatrix);
