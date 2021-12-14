@@ -1,9 +1,6 @@
 package myPrograms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class RandomizeList {
@@ -123,5 +120,4 @@ public class RandomizeList {
         }
         return noEquip;
     }
-
 }
