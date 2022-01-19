@@ -81,6 +81,7 @@ public class UD05_02v1 {
                 case 3 -> {
                     System.out.println("\n>>> MULTIPLICAR <<<");
                     System.out.println("Introduce dos números separados por un espacio: ");
+
                     try {
                         ene = Integer.parseInt(sc.next());
                         eme = Integer.parseInt(sc.next());
