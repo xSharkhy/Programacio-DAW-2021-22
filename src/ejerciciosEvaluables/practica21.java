@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class practica21 {
     static final Scanner sc = new Scanner(System.in);
+    static final int TRES = 3;
+    static final int CINCO = 5;
     static char[][] tablero = new char[6][6];
     static char[][] juego = new char[6][6];
     static String nombre = "Capitán ";
@@ -13,8 +15,6 @@ public class practica21 {
     static byte carguero = 0;
     static byte lancha = 0;
     static byte contador = 0;
-    static final int TRES = 3;
-    static final int CINCO = 5;
 
     private static void jugar() {
         for (char[] chars : juego) Arrays.fill(chars, '_');
@@ -51,7 +51,6 @@ public class practica21 {
                 }
             } else {
                 System.out.println("No podemos tirar ahí, " + nombre + "!");
-                i--;
             }
         }
     }
@@ -112,12 +111,12 @@ public class practica21 {
                     }
                     case 0 -> {
                         aux = 4;
-                        if (x + aux <= tablero.length) {
+                        if (y + aux <= tablero.length) {
                             byte cont = 1;
-                            for (int i = 1; i < aux; i++) if (tablero[x + i][y] == '_') cont++;
+                            for (int i = 1; i < aux; i++) if (tablero[x][y + i] == '_') cont++;
                             if (cont == aux) {
                                 for (int i = 0; i < aux; i++) {
-                                    tablero[x + i][y] = barco[contador];
+                                    tablero[x][y + i] = barco[contador];
                                 }
                                 transa++;
                                 return false;
@@ -125,7 +124,8 @@ public class practica21 {
                         }
                     }
                 } else s = errorSolapa(numero, maximo);
-            } else s = errorOOB(numero, maximo);
+            } else if (s.equalsIgnoreCase("stop")) return true;
+            else s = errorOOB(numero, maximo);
         } while (true);
     }
 
