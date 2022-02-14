@@ -1,9 +1,6 @@
 package unitatDidactica_06;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class UD06_02v1 {
     static final Scanner sc = new Scanner(System.in);
@@ -12,6 +9,28 @@ public class UD06_02v1 {
     static final String upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     static final String lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
     static final String numbers = "0123456789";
+    static final HashMap<String, String> diccionario = new HashMap<>() {{
+        put("espíritu", "spirit");
+        put("pulir", "polish");
+        put("morder", "bite");
+        put("artesano", "craftsman");
+        put("cubrir", "cover");
+        put("pareja", "partner");
+        put("lino", "linen");
+        put("dibujo", "drawing");
+        put("lesión", "injury");
+        put("distinto", "distinct");
+        put("lámpara", "lamp");
+        put("número", "number");
+        put("compromiso", "compromise");
+        put("repetición", "repetition");
+        put("negociación", "negotiation");
+        put("obligar", "coerce");
+        put("foro", "forum");
+        put("provocar", "provoke");
+        put("aprobación", "approval");
+        put("empujar", "push");
+    }};
 
     public static void main(String[] args) {
         UD06_02v1 program = new UD06_02v1();
@@ -36,38 +55,40 @@ public class UD06_02v1 {
     }
 
     private void ejer90() {
+        String[] keys = new String[diccionario.size()];
+        String[] values = new String[diccionario.size()];
+        Integer[] indexes = new Integer[20];
 
+        int i = 0;
+        for (Map.Entry<String, String> mapEntry : diccionario.entrySet()) {
+            keys[i] = mapEntry.getKey();
+            values[i] = mapEntry.getValue();
+            i++;
+        }
+
+        List<Integer> list = Arrays.asList(indexes);
+        Arrays.setAll(indexes, j -> j);
+        Collections.shuffle(list);
+        list.toArray(indexes);
+
+        byte aciertos = 0;
+        byte fallos = 0;
+        for (int j = 0; j < 5; j++) {
+            System.out.printf("La palabra es... %s!%n", keys[indexes[j]]);
+            String solucion = sc.nextLine();
+            if (solucion.equalsIgnoreCase(values[indexes[j]])) aciertos++;
+            else fallos++;
+        }
+        System.out.printf("%nHas acertado %d y has fallado %d!%n", aciertos, fallos);
     }
 
     public void ejer89() {
-        HashMap<String, String> diccionario = new HashMap<>() {{
-            put("espíritu", "spirit");
-            put("pulir", "polish");
-            put("morder", "bite");
-            put("artesano", "craftsman");
-            put("cubrir", "cover");
-            put("pareja", "partner");
-            put("lino", "linen");
-            put("dibujo", "drawing");
-            put("lesión", "injury");
-            put("distinto", "distinct");
-            put("lámpara", "lamp");
-            put("número", "number");
-            put("compromiso", "compromise");
-            put("repetición", "repetition");
-            put("negociación", "negotiation");
-            put("obligar", "coerce");
-            put("foro", "forum");
-            put("provocar", "provoke");
-            put("aprobación", "approval");
-            put("empujar", "push");
-        }};
-
         while (true) {
             System.out.println("Introduce una palabra: ");
             String palabra = sc.nextLine();
             if (palabra.equalsIgnoreCase("salir")) break;
-            else if (diccionario.containsKey(palabra)) System.out.println("La tracucción es: " + diccionario.get(palabra));
+            else if (diccionario.containsKey(palabra))
+                System.out.println("La tracucción es: " + diccionario.get(palabra));
             else System.out.println("No contenemos esa palabra!");
         }
     }
