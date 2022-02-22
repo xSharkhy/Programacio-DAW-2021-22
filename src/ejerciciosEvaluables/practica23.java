@@ -79,7 +79,7 @@ public class practica23 {
         System.out.println("¿Cómo quieres llamar a tu estantería?");
         while (true) {
             String estanteria = sc.nextLine().toUpperCase();
-            if (Pattern.compile("[A-Z*&&[^AEIOU]]{3}").matcher(estanteria).find()) {
+            if (Pattern.compile("A-Z*&&[^AEIOU]{3}").matcher(estanteria).find()) {
                 return estanteria;
             } else {
                 System.out.println("ERROR!: Nombre incorrecto!, Introduzca el nombre de nuevo:");
