@@ -2,7 +2,10 @@ package myPrograms;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
+import java.util.Scanner;
 
 public class gestionVersiones {
     static final Scanner sc = new Scanner(System.in);

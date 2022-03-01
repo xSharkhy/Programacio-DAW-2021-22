@@ -18,6 +18,7 @@ public class problema619 {
         }
     }
 }
+
 class a {
     static final Scanner sc = new Scanner(System.in);
 

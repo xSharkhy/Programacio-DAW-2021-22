@@ -1,6 +1,8 @@
 package aceptaElReto;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class problema411 {
     static Scanner sc = new Scanner(System.in);

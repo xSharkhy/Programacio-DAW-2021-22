@@ -108,9 +108,10 @@ public class Matricula {
                             telMovil = input.nextInt();
                             input.nextLine();
                         }
-                        case 8 -> System.out.println("El alumno " + nombre + " de NIF " + NIF + ", nacido el " + fechaNacimiento + "," +
-                                "\ncon residencia en " + direccion + ", " + codigoPostal + ", " + poblacion + "\ny teléfonos de" +
-                                " contacto fijo: " + telFijo + " y móvil: " + telMovil + ".");
+                        case 8 ->
+                                System.out.println("El alumno " + nombre + " de NIF " + NIF + ", nacido el " + fechaNacimiento + "," +
+                                        "\ncon residencia en " + direccion + ", " + codigoPostal + ", " + poblacion + "\ny teléfonos de" +
+                                        " contacto fijo: " + telFijo + " y móvil: " + telMovil + ".");
                         default -> System.out.println("Entrada Incorrecta.");
                     }
                 } while (incorrecto != 8);
