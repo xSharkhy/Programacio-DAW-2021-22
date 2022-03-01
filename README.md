@@ -1,8 +1,5 @@
-# programming21_22
-Yearly project about what I've done in class.
+# Programming 2021/22
+## Ismael Morejón, DAW IES Serpis
 
-This project is done with what we've done in class, I'll be constantly updating
-this project with daily pushes. This Java Project has different packages from
-class exercises, challenges and evaluable activities. I will probably add some
-codes of my own and other things I'll be doing apart from school. There's also
-a package with exercises that I'm doing on HyperSkill. Feel free to look at it.
+Annual project of the programming subject in the 1st year of DAW at IES Serpis **in Java**
+Also having some Java classes and exercises from [hyperskill.org](http://hyperskill.org "hyperskill.org") and [aceptaelreto.com](http://aceptaelreto.com "aceptaelreto.com").
