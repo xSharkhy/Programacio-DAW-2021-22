@@ -1,4 +1,4 @@
-package evaluacion3.unitatDidactica_07.ordenador;
+package evaluacion3.unitatDidactica_07.UD07_01.ordenador;
 
 public class Ordenador {
     private String procesador;
