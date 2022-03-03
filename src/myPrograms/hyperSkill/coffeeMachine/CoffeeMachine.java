@@ -1,7 +1,5 @@
 package myPrograms.hyperSkill.coffeeMachine;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Scanner;
 
 public class CoffeeMachine {
@@ -73,7 +71,7 @@ class CoffeeMachineConfig {
     }
 
 
-    private @NotNull String cappuccino() {
+    private String cappuccino() {
         if (water - 200 >= 0) {
             if (milk - 100 >= 0) {
                 if (coffeeBeans - 12 >= 0) {
@@ -101,7 +99,7 @@ class CoffeeMachineConfig {
     private void doesNothing() {
     }
 
-    private @NotNull String latte() {
+    private String latte() {
         if (water - 350 >= 0) {
             if (milk - 75 >= 0) {
                 if (coffeeBeans - 16 >= 0) {
@@ -126,7 +124,7 @@ class CoffeeMachineConfig {
         }
     }
 
-    private @NotNull String espresso() {
+    private String espresso() {
         if (water - 250 >= 0) {
             if (coffeeBeans - 16 >= 0) {
                 if (cups - 1 >= 0) {
