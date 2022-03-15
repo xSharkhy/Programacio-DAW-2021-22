@@ -37,7 +37,6 @@ public class Quadratic {
             if (a == 0.0) {
                 System.out.println("Eso traería problemas... Inserta un valor distinto a 0.");
                 a = Double.parseDouble(input.nextLine());
-                validate = false;
             } else {
                 validate = true;
             }

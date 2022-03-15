@@ -27,7 +27,11 @@ public class UD02_02v2 {
     }
 
     private void ejer4() {
-
+        int x = Integer.parseInt(sc.nextLine());
+        System.out.println("Tabla de multiplicar de " + x);
+        for (int i = 1; i <= 10; i++) {
+            System.out.printf("%d x %d = %d%n", x, i, (x * i));
+        }
     }
 
     private void ejer5() {

@@ -67,6 +67,6 @@ public class UD02_02v1 {
         System.out.println("Buenas noches. En estos días tan especiales a finales del año " +
                 year + "\nen los que siempre nos deben unirlos mejores sentimientos os deseo,\n" +
                 "junto a la Reina y nuestras hijas, una Feliz Navidad y que en el próximo \n" +
-                "año " + year++ + " podáis ver cumplidos vuestros anhelos y aspiraciones");
+                "año " + (year + 1) + " podáis ver cumplidos vuestros anhelos y aspiraciones");
     }
 }
