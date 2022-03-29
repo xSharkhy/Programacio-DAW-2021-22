@@ -1,4 +1,4 @@
-package evaluacion3.unitatDidactica_07.UD07_02_POOv6.ejer99b;
+package evaluacion3.unitatDidactica_07.UD07_02_POOejer99.ejer99b;
 
 public class Equipo {
 
