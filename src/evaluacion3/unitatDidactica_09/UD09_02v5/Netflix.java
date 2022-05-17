@@ -85,37 +85,40 @@ public class Netflix {
         String productora = sc.nextLine();
         System.out.println("Introduzca año de publicación:");
         int anyo = parseInt(sc.nextLine());
-        if (i == 1) {
-            while (true) {
-                try {
-                    System.out.println("Numero de nominaciones a los oscars:");
-                    int nominaciones = parseInt(sc.nextLine());
-                    System.out.println("Numero de oscars ganados:");
-                    int oscar = parseInt(sc.nextLine());
-                    lista.add(new Pelicula(titulo, productora, anyo, false, nominaciones, oscar));
-                    break;
-                } catch (NumeroPremiosExcepcion NPE) {
-                    System.out.println(NPE.getMessage());
-                }
-            }
-        } else {
-            while (true) {
-                try {
-                    System.out.println("Introduzca numero de temporadas:");
-                    int temporadas = parseInt(sc.nextLine());
-                    boolean finalizada;
-                    while (true) {
-                        System.out.println("¿La serie está finalizada o no? (S/N):");
-                        String s = sc.nextLine();
-                        finalizada = s.equalsIgnoreCase("s");
-                        if (finalizada || s.equalsIgnoreCase("n")) break;
+        switch (i) {
+            case 1:
+                while (true) {
+                    try {
+                        System.out.println("Numero de nominaciones a los oscars:");
+                        int nominaciones = parseInt(sc.nextLine());
+                        System.out.println("Numero de oscars ganados:");
+                        int oscar = parseInt(sc.nextLine());
+                        lista.add(new Pelicula(titulo, productora, anyo, false, nominaciones, oscar));
+                        break;
+                    } catch (NumeroPremiosExcepcion NPE) {
+                        System.out.println(NPE.getMessage());
                     }
-                    lista.add(new Serie(titulo, productora, anyo, false, temporadas, finalizada));
-                    break;
-                } catch (NumeroTemporadasExcepcion NTE) {
-                    System.out.println(NTE.getMessage());
                 }
-            }
+                break;
+            case 2:
+                while (true) {
+                    try {
+                        System.out.println("Introduzca numero de temporadas:");
+                        int temporadas = parseInt(sc.nextLine());
+                        boolean finalizada;
+                        while (true) {
+                            System.out.println("¿La serie está finalizada o no? (S/N):");
+                            String s = sc.nextLine();
+                            finalizada = s.equalsIgnoreCase("s");
+                            if (finalizada || s.equalsIgnoreCase("n")) break;
+                        }
+                        lista.add(new Serie(titulo, productora, anyo, false, temporadas, finalizada));
+                        break;
+                    } catch (NumeroTemporadasExcepcion NTE) {
+                        System.out.println(NTE.getMessage());
+                    }
+                }
+                break;
         }
         System.out.printf("La %s %s ha sido dada de alta correctamente!%n", tipo, titulo);
     }
